@@ -1,10 +1,10 @@
 let allPatterns = [
     new Outpulse(),
-    new Syncpulse()
+    new Syncpulse(),
+    new Wigglepulse(),
 ]
 
-shuffle(allPatterns)
 
 function randomPattern(){
-    return allPatterns[Math.floor( rand() * allPatterns.length )]
+    return randChoice(allPatterns)
 }

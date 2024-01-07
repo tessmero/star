@@ -7,28 +7,9 @@ function init() {
       cvs.style.width='100%';
       cvs.style.height='100%';  
     cvs.addEventListener("mousedown", mouseDown);
-    cvs.addEventListener("mousemove", mouseMove);
     cvs.addEventListener("mouseup", mouseUp);
     cvs.addEventListener("touchstart", mouseDown, false);
     cvs.addEventListener("touchend", mouseUp, false);
-    
-    // https://stackoverflow.com/a/63469884
-    var previousTouch;
-    cvs.addEventListener("touchmove", (e) => {
-        const touch = e.touches[0];
-        if (previousTouch) {
-            e.movementX = touch.pageX - previousTouch.pageX;
-            e.movementY = touch.pageY - previousTouch.pageY;
-            mouseMove(e);
-        };
-
-        previousTouch = touch;
-        e.preventDefault()
-    });
-    cvs.addEventListener("touchend", (e) => {
-        previousTouch = null
-        mouseUp(e)
-    });
     
     
     global.canvas = cvs
@@ -44,8 +25,9 @@ function init() {
 function resetGame(){
     resetRand(hard = true)
     
-    global.currentPattern = new Syncpulse()
-    global.nextPattern = new Outpulse()
+    global.currentPattern = allPatterns[0]
+    global.nextPattern = allPatterns[0]
+    shuffle(allPatterns)
 }
 
 

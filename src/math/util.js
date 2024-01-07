@@ -12,6 +12,10 @@ function randRange(min,max){
     return min + rand()*(max-min)
 }
 
+function randChoice(options){
+    return options[Math.floor( Math.random() * options.length )]
+}
+
 function cleanAngle(a){
     a = nnmod(a,twopi)
     if( a > Math.PI ){
