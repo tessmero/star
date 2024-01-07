@@ -4,6 +4,8 @@ class Pattern {
         this.dotSpecs = new Array(90*3).fill(0)
     }
     
+    refresh(){}
+    
     pushSpecs(...arr){
         arr.forEach( val => 
             this.dotSpecs[this.specIndex++] = val

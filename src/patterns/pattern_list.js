@@ -2,9 +2,12 @@ let allPatterns = [
     new Outpulse(),
     new Syncpulse(),
     new Wigglepulse(),
+    new Wavepulse(),
 ]
 
 
 function randomPattern(){
-    return randChoice(allPatterns)
+    let result = randChoice(allPatterns)
+    result.refresh()
+    return result
 }

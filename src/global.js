@@ -40,7 +40,7 @@ const global = {
     mouseDownDisabled: false,
     initPointSpeed: 1e-5,//pointiness unites per ms
     pointSpeed: 1e-7,//pointiness unites per ms
-    pointAccel: 1e-7,
+    pointAccel: 4e-7,
     canvasMousePos: v(0,0),     //pixels
     mousePos: v(0,0),           //virtual units
     
