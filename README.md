@@ -1,10 +1,11 @@
-Sliding grid animation where each row/column is treated as a loop. The grid deterministacally solves itself like a rubik's cube.
+Familiar star pattern with a smooth complex "breathing" type animation. 
 
-Also animated transition between square grid and radial grid
+A variety of procedural animations are prepared. At any given point there are two different procedures active, being weighted-averaged together with gradually shifting weight.
+
 
 ## Demo
 
-https://tessmero.github.io/slide.html
+https://tessmero.github.io/star.html
 
 ## Usage
 
