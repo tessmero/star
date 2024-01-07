@@ -13,6 +13,10 @@ function update(dt) {
 
     // advance animation
     global.t += dt
+    
+    // test transition
+    let angle = global.t * twopi/20000
+    global.transR = (Math.sin(angle)+1)/2
 
     // check for resized window
     fitToContainer()    

@@ -43,6 +43,9 @@ function init() {
 
 function resetGame(){
     resetRand(hard = true)
+    
+    global.currentPattern = new Syncpulse()
+    global.nextPattern = new Outpulse()
 }
 
 

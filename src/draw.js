@@ -1,8 +1,4 @@
 
-// oscillate from 0 to 1
-function pulse(period,offset=0){
-    return (Math.sin(offset + global.t * twopi/period)+1)/2
-}
     
     
 // Render graphics
@@ -39,38 +35,22 @@ function draw(fps, t) {
     g.stroke()
     g.fill()
 
+    // build dot specs
+    // (angle, rad, rad)
+    let s0 = global.currentPattern.getUpdatedSpecs()
+    let s1 = global.nextPattern.getUpdatedSpecs()
+    //g.fill()
+
     // draw dots
+    console.log(global.transR)
     g.beginPath()
-    n = 10
-    let dotPulseOffset = 0 //radians
-    let dotPulseOffsetStep = -phi/2
-    let dotPulsePeriod = 2000 //ms
-    let dotRadRange = [.010,.018]
-    let dotPosRad = starRad + 5*dotRadRange[1]
-    let dotPosRadStep = 3*dotRadRange[1]
-    for( var j = 0 ; j < 6 ; j++ ){
-        let dotPulse = pulse(dotPulsePeriod,dotPulseOffset)
-        let dotRad = dotRadRange[0] + (dotRadRange[1]-dotRadRange[0]) * dotPulse
-        dotPulseOffset += dotPulseOffsetStep
-        for( let i = 0 ; i < n ; i++ ){
-            let p = center.add( vp( -pio2 + i*twopi/n, dotPosRad  ) )
-            g.moveTo( p.x, p.y )
-            g.arc( p.x,p.y,dotRad,0,twopi)
-        }
-        dotPosRad += dotPosRadStep
-    }
-    dotPosRad = starRad + 5*dotRadRange[1]
-    dotPosRad += dotPosRadStep
-    for( var j = 0 ; j < 3 ; j++ ){
-        let dotPulse = pulse(dotPulsePeriod,dotPulseOffset)
-        let dotRad = dotRadRange[0] + (dotRadRange[1]-dotRadRange[0]) * dotPulse
-        dotPulseOffset += dotPulseOffsetStep
-        for( let i = 0 ; i < n ; i++ ){
-            let p = center.add( vp( -pio2 + (i+.5)*twopi/n, dotPosRad  ) )
-            g.moveTo( p.x, p.y )
-            g.arc( p.x,p.y,dotRad,0,twopi)
-        }
-        dotPosRad += dotPosRadStep
+    for( let i = 0 ; i < 270 ; i+=3 ){
+        let a = avg(s0[i],s1[i],global.transR)
+        let r0 = avg(s0[i+1],s1[i+1],global.transR)
+        let r1 = avg(s0[i+2],s1[i+2],global.transR)
+        let p = center.add( vp( a, r0 ) )
+        g.moveTo( p.x, p.y )
+        g.arc( p.x,p.y,r1,0,twopi)
     }
     g.fill()
 

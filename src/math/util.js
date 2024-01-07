@@ -23,6 +23,11 @@ function cleanAngle(a){
     return a        
 }
 
+// oscillate from 0 to 1
+function pulse(period,offset=0){
+    return (Math.sin(offset + global.t * twopi/period)+1)/2
+}
+
 //non-negative mod
 function nnmod(a,b){
     var r = a%b

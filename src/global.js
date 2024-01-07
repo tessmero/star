@@ -19,6 +19,11 @@ const global = {
     screenCorners: null, 
     
     // 
+    currentPattern: null, //current pulse pattern
+    nextPattern: null, // next pulse pattern
+    transR: 0, // goes from 0 to 1 when switching
+    
+    // 
     t: 0, // total elapsed time
     autoResetCountdown: 0,
     autoResetDelay: 5000,
