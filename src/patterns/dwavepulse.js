@@ -1,4 +1,4 @@
-class Wavepulse extends Pattern {
+class Dwavepulse extends Pattern {
     constructor(){
         super()
     }
@@ -20,7 +20,7 @@ class Wavepulse extends Pattern {
         for( var j = 0 ; j < 6 ; j++ ){
             for( let i = 0 ; i < n ; i++ ){
                 let a = -pio2 + (i)*twopi/n
-                let rr = this.computeDotRad(a,r)
+                let rr = this.computeDotRad1(a,r)
                 let pr = r + this.computePosRadOffset(rr)
                 this.pushSpecs(a, pr, rr)
             }
@@ -32,7 +32,7 @@ class Wavepulse extends Pattern {
         for( var j = 0 ; j < 3 ; j++ ){
             for( let i = 0 ; i < n ; i++ ){
                 let a = -pio2 + (i+.5)*twopi/n
-                let rr = this.computeDotRad(a,r)
+                let rr = this.computeDotRad2(a,r)
                 let pr = r + this.computePosRadOffset(rr)
                 this.pushSpecs(a, pr, rr)
             }
@@ -44,7 +44,11 @@ class Wavepulse extends Pattern {
         return rr-.010
     }
     
-    computeDotRad(a,r){
+    computeDotRad1(a,r){
         return avg(.010,.018,(Math.sin(this.wa-a)+1)/2)
+    }
+    
+    computeDotRad2(a,r){
+        return avg(.010,.018,1-(Math.sin(this.wa-a)+1)/2)
     }
 }

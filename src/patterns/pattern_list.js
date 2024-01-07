@@ -3,11 +3,10 @@ let allPatterns = [
     new Syncpulse(),
     new Wigglepulse(),
     new Wavepulse(),
+    new Dwavepulse(),
 ]
 
 
 function randomPattern(){
-    let result = randChoice(allPatterns)
-    result.refresh()
-    return result
+    return randChoice(allPatterns)
 }
